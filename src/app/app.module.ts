@@ -16,11 +16,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FileTransfer } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
-import { Camera } from '@ionic-native/camera';
-
 import { ProductServiceProvider } from '../providers/product-service/product-service';
+
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 
 
 @NgModule({
@@ -50,10 +51,11 @@ import { ProductServiceProvider } from '../providers/product-service/product-ser
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}, 
-    FileTransfer,
     File,
-    Camera,    
+    Transfer,
+    Camera,
+    FilePath,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},    
     ProductServiceProvider
   ]
 })

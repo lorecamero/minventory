@@ -22,20 +22,20 @@
 <ion-content padding>
 
 
-        <ion-item>
-          <p>{{imageURI}}</p>
-          <button ion-button color="secondary" (click)="getImage()">Get Image</button>
-        </ion-item>
-        <ion-item>
-          <h4>Image Preview</h4>
-          <img src="{{imageFileName}}" *ngIf="imageFileName" alt="Ionic File" width="300" />
-        </ion-item>
-        <form (ngSubmit)="uploadFile()">
-            <ion-input type="hidden" name="imgUploader" value="{{imageURI}}"></ion-input>
-            <ion-item>
-                <button ion-button type="submit">Upload</button>
-              </ion-item>
-        </form>
+    <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+ 
+    <ion-footer>
+        <ion-toolbar color="primary">
+          <ion-buttons>
+            <button ion-button icon-left (click)="presentActionSheet()">
+              <ion-icon name="camera"></ion-icon>Select Image
+            </button>
+            <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+              <ion-icon name="cloud-upload"></ion-icon>Upload
+            </button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-footer>
        
 
 
