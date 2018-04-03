@@ -1,0 +1,39 @@
+# Add any directories, files, or patterns you don't want to be tracked by version control
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+
+# Dependencies
+/node_modules
+/server/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+testem.log
+/typings
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Debug log
+debug.log
