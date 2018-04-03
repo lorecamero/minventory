@@ -18,11 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ProductServiceProvider } from '../providers/product-service/product-service';
 
-import { File } from '@ionic-native/file';
-import { Transfer } from '@ionic-native/transfer';
-import { FilePath } from '@ionic-native/file-path';
-import { Camera } from '@ionic-native/camera';
-
 
 @NgModule({
   declarations: [
@@ -51,10 +46,6 @@ import { Camera } from '@ionic-native/camera';
   providers: [
     StatusBar,
     SplashScreen,
-    File,
-    Transfer,
-    Camera,
-    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler},    
     ProductServiceProvider
   ]
