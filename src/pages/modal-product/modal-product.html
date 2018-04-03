@@ -1,0 +1,72 @@
+<!--
+  Generated template for the ModalProductPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title start>{{product.name}}</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="closeModalProduct()">
+          <ion-icon name="close"></ion-icon>
+          Close
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <form #updateProductForm="ngForm" (ngSubmit)="showUpdateAlert(updateProductForm,product.name)">
+    <ion-list>
+
+        <ion-input type="hidden" [(ngModel)]="product._id" name="_id"></ion-input>
+
+        <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" [(ngModel)]="product.name" name="name"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Sku</ion-label>
+              <ion-input type="text" [(ngModel)]="product.sku" name="sku"></ion-input>
+            </ion-item>
+        
+          <ion-item>
+            <ion-label floating>Price</ion-label>
+            <ion-input type="text" [(ngModel)]="product.price" name="price"></ion-input>
+          </ion-item>
+
+          <ion-item>
+           <ion-label floating>Description</ion-label>
+           <ion-input type="text" [(ngModel)]="product.description" name="description"></ion-input>
+          </ion-item>
+
+          <ion-item>
+           <ion-label fixed>Enabled</ion-label>
+           <ion-checkbox color="dark" [(ngModel)]="product.active" name="active"></ion-checkbox>
+          </ion-item>
+      
+      
+      </ion-list>
+
+      <button type="submit" ion-button icon-left>
+          <ion-icon ios="ios-build" name="build"></ion-icon>
+          Update Product
+        </button>
+
+        <button type="button" color="danger" ion-button icon-left (click)='showDeleteAlert(product)'>
+            <ion-icon ios="ios-trash" name="trash"></ion-icon>
+            Delete Product
+         </button>
+
+     </form> 
+
+    
+
+
+</ion-content>

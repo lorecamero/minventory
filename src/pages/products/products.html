@@ -1,0 +1,75 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        Products
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+ 
+        <!--<ion-list *ngIf="products">
+                <ion-card *ngFor="let product of products" >
+                        <ion-card-content>
+                          <ion-card-title>
+                                {{product.name}}
+                            </ion-card-title>
+                            <p>{{product.sku}}</p>
+                            <p>{{product.price}}</p>
+                            <p>{{product.description}}</p>
+                            <p>{{product.active}}</p>
+                        </ion-card-content>
+             </ion-card>
+       </ion-list>-->
+
+       <ion-list>
+        <ion-item *ngFor="let product of products">
+          <ion-thumbnail item-start>
+            <img src="../../assets/imgs/ionic-default.png">
+          </ion-thumbnail>
+          <h2>{{product.name}}</h2>
+          <p>{{product.description}}</p>
+          <button ion-button clear item-end (click)='openProductModal(product)'>View</button>
+        </ion-item>
+      </ion-list>
+
+
+      <h3>Add Product</h3>
+      <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+      <ion-item>
+        <ion-label floating>Name</ion-label>
+        <ion-input type="text" [(ngModel)]="name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label floating>Sku</ion-label>
+          <ion-input type="text" [(ngModel)]="sku" name="sku"></ion-input>
+        </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Price</ion-label>
+        <ion-input type="text" [(ngModel)]="price" name="price"></ion-input>
+      </ion-item>
+
+      <ion-item>
+       <ion-label floating>Description</ion-label>
+       <ion-input type="text" [(ngModel)]="description" name="description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+       <ion-label fixed>Enabled</ion-label>
+       <ion-checkbox color="dark" checked="true" [(ngModel)]="active" name="active"></ion-checkbox>
+      </ion-item>
+      
+      <ion-item>
+              <button ion-button color="light" large type="submit">
+                  <ion-icon ios="ios-add" name="add"></ion-icon>
+                 Add product
+              </button>
+      </ion-item>
+
+      </form>
+
+  
+  </ion-content>
+  
