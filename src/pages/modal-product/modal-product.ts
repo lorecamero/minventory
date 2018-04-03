@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams,ViewController,LoadingController,AlertController,ToastController } from 'ionic-angular';
+import { IonicPage, NavParams,ViewController,LoadingController,AlertController, ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import {ProductServiceProvider} from '../../providers/product-service/product-service';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
@@ -61,8 +61,8 @@ export class ModalProductPage {
     const fileTransfer: FileTransferObject = this.transfer.create();
   
     let options: FileUploadOptions = {
-      fileKey: this.product._id,
-      fileName: this.product._id,
+      fileKey: 'ionicfile',
+      fileName: this.imageFileName,
       chunkedMode: false,
       mimeType: "image/jpeg",
       headers: {}
@@ -71,7 +71,7 @@ export class ModalProductPage {
     fileTransfer.upload(this.imageURI, 'http://laposhshop.com:8100/api/uploadimage/products', options)
       .then((data) => {
       console.log(data+" Uploaded Successfully");
-      this.imageFileName = "http://laposhshop.com:8080/api/images/"+this.product._id;
+      this.imageFileName = "http://laposhshop.com/api/images/ionicfile.jpg"
       loader.dismiss();
       this.presentToast("Image uploaded successfully");
     }, (err) => {
