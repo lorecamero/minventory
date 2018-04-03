@@ -106,19 +106,14 @@ export class ModalProductPage {
   updateProduct(updateProductForm){
     this.presentLoading();
     console.log('value: '+updateProductForm);
-    setInterval(() => {
       this.ProductServiceProvider.updateProduct(updateProductForm);
-    }, 500); 
     this.removeLoading();
     this.showAlert(updateProductForm);
 
   }
 
   deleteProduct(product){
-
-    setInterval(() => {
       this.ProductServiceProvider.deleteProduct(product);
-    }, 500); 
     this.closeModalProduct(); 
     //test
   }

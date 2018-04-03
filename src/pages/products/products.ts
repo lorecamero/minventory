@@ -55,9 +55,9 @@ export class ProductsPage {
 
   addProduct(productForm: NgForm){
     //console.log(productForm.value);
-    setInterval(() => {
+
       this.ProductServiceProvider.addProduct(productForm.value);
-    }, 500); 
+
     this.loadProducts();
   }
   
