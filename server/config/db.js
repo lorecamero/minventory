@@ -14,7 +14,7 @@ models.forEach((model) => {
 });
 
 try {
-  mongoose.connect(config.dbLocal, {dbName: config.dbName});
+  mongoose.connect(config.dbDeployment, {dbName: config.dbName});
 } catch (e) {
   console.log('Error: Could not connect to database.');
   throw e;

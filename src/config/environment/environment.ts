@@ -5,7 +5,8 @@
 
 export const environment = {
   local : {
-    api: 'http://localhost:8101/api'
+    //api: 'http://localhost:8101/api'
+    api: 'http://laposhshop.com:8100/api'
   },
   deployment: {
     api: 'http://laposhshop.com:8100/api'
