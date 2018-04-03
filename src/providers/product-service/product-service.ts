@@ -110,7 +110,7 @@ export class ProductServiceProvider {
    /* var url = "http://supercopyoc.com/api/addproduct.php?key="+postParams.key+"&name="+postParams.name+"&sku="+postParams.sku
     +"&description="+postParams.description+"&price="+postParams.price+"&active="+postParams.active;
     */
-    this.http.post (environment.local.api + '/products/update', postParams)
+    this.http.put(environment.local.api + '/products/update', postParams)
     .subscribe(data => {
       console.log(data);
      }, error => {
