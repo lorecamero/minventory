@@ -56,9 +56,10 @@ export class ProductsPage {
   addProduct(productForm: NgForm){
     //console.log(productForm.value);
 
-      this.ProductServiceProvider.addProduct(productForm.value);
-
-    this.loadProducts();
+      this.ProductServiceProvider.addProduct(productForm.value)
+        .then((product) => {
+          this.loadProducts();
+        });
   }
   
 

@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
+import { environment } from '../../config/environment/environment';
+
 /*
   Generated class for the ProductServiceProvider provider.
 
@@ -31,9 +33,9 @@ export class ProductServiceProvider {
       // We're using Angular HTTP provider to request the data,
       // then on the response, it'll map the JSON data to a parsed JS object.
       // Next, we process the data and resolve the promise with the new data.
-      // http://laposhshop.com:8100/api/get/products
+      // http://localhost:8101/api/get/products
       // http://supercopyoc.com/api/getproducts.php
-      this.http.get('http://laposhshop.com:8100/api/get/products')
+      this.http.get(environment.local.api + '/products/get')
         .map(res => res)
         .subscribe(data => {
           // we've got back the raw data, now generate the core schedule data
@@ -69,12 +71,16 @@ export class ProductServiceProvider {
    /* var url = "http://supercopyoc.com/api/addproduct.php?key="+postParams.key+"&name="+postParams.name+"&sku="+postParams.sku
     +"&description="+postParams.description+"&price="+postParams.price+"&active="+postParams.active;
     */
-    this.http.post("http://laposhshop.com:8100/api/add/products", postParams)
-    .subscribe(data => {
-      console.log(data);
-     }, error => {
-      console.log(error);// Error getting the data
+
+    return new Promise((resolve, reject) => {
+      this.http.post(environment.local.api + '/products/add', postParams)
+        .subscribe(data => {
+          resolve(data);
+        }, error => {
+          reject(error);// Error getting the data
+        });
     });
+    
 
   }
 
@@ -104,7 +110,7 @@ export class ProductServiceProvider {
    /* var url = "http://supercopyoc.com/api/addproduct.php?key="+postParams.key+"&name="+postParams.name+"&sku="+postParams.sku
     +"&description="+postParams.description+"&price="+postParams.price+"&active="+postParams.active;
     */
-    this.http.post("http://supercopyoc.com/api/updateproduct.php", postParams)
+    this.http.post (environment.local.api + '/products/update', postParams)
     .subscribe(data => {
       console.log(data);
      }, error => {
@@ -131,12 +137,13 @@ export class ProductServiceProvider {
       console.log(error);// Error getting the data
     });
     */
-    
-    this.http.delete('http://laposhshop.com:8100/api/delete/products/' + product._id)
-    .subscribe(data => {
-      console.log(data);
-     }, error => {
-      console.log(error);// Error getting the data
+    return new Promise((resolve, reject) => {
+      this.http.delete(environment.local.api + '/products/delete/' + product._id)
+      .subscribe(data => {
+        resolve(data);
+      }, error => {
+        reject(error);// Error getting the data
+      });
     });
 
   }

@@ -113,8 +113,10 @@ export class ModalProductPage {
   }
 
   deleteProduct(product){
-      this.ProductServiceProvider.deleteProduct(product);
-    this.closeModalProduct(); 
+      this.ProductServiceProvider.deleteProduct(product)
+        .then((product) => {
+          this.closeModalProduct(); 
+        });
     //test
   }
 
