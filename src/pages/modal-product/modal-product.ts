@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams,ViewController,LoadingController,AlertController } from 'ionic-angular';
+import { IonicPage, NavParams,ViewController,LoadingController,AlertController, ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import {ProductServiceProvider} from '../../providers/product-service/product-service';
+
 
 /**
  * Generated class for the ModalProductPage page.
@@ -9,7 +10,7 @@ import {ProductServiceProvider} from '../../providers/product-service/product-se
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-
+declare var cordova: any;
 @IonicPage()
 @Component({
   selector: 'page-modal-product',
@@ -19,11 +20,21 @@ import {ProductServiceProvider} from '../../providers/product-service/product-se
 export class ModalProductPage {
   public product: any;
   public loader: any;
+  lastImage: string = null;
+  loading: any;
 
-  constructor(public alertCtrl: AlertController,public loadingCtrl: LoadingController,public ViewController: ViewController, public navParams: NavParams,public ProductServiceProvider:ProductServiceProvider) {
+  constructor(
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public ViewController: ViewController, 
+    public navParams: NavParams,
+    public ProductServiceProvider:ProductServiceProvider,
+    public toastCtrl: ToastController
+  ) {
     console.log(navParams.get('product'));
     this.product = navParams.get('product');
   }
+
 
   ionViewDidLoad() {
     //console.log('ionViewDidLoad ModalProductPage');
