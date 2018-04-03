@@ -1,0 +1,8 @@
+{
+  "name": "minventory",
+  "app_id": "a80f1b8b",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
