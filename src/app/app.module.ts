@@ -12,9 +12,16 @@ import { ProductsPage } from '../pages/products/products';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Camera } from '@ionic-native/camera';
+
 import { ProductServiceProvider } from '../providers/product-service/product-service';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +50,10 @@ import { ProductServiceProvider } from '../providers/product-service/product-ser
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: IonicErrorHandler}, 
+    FileTransfer,
+    File,
+    Camera,    
     ProductServiceProvider
   ]
 })

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavParams,ViewController,LoadingController,AlertController } from 'ionic-angular';
+import { IonicPage, NavParams,ViewController,LoadingController,AlertController,ToastController } from 'ionic-angular';
 import { NgForm } from '@angular/forms';
 import {ProductServiceProvider} from '../../providers/product-service/product-service';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 /**
  * Generated class for the ModalProductPage page.
@@ -19,10 +21,78 @@ import {ProductServiceProvider} from '../../providers/product-service/product-se
 export class ModalProductPage {
   public product: any;
   public loader: any;
+  public imageURI:any;
+  public imageFileName:any;
 
-  constructor(public alertCtrl: AlertController,public loadingCtrl: LoadingController,public ViewController: ViewController, public navParams: NavParams,public ProductServiceProvider:ProductServiceProvider) {
+  constructor(
+    public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
+    public ViewController: ViewController, 
+    public navParams: NavParams,
+    public ProductServiceProvider:ProductServiceProvider,
+    private transfer: FileTransfer,
+    private camera: Camera,
+    public toastCtrl: ToastController
+  ) {
     console.log(navParams.get('product'));
     this.product = navParams.get('product');
+  }
+
+  getImage() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.FILE_URI,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+    }
+  
+    this.camera.getPicture(options).then((imageData) => {
+      this.imageURI = imageData;
+    }, (err) => {
+      console.log(err);
+      this.presentToast(err);
+    });
+  }
+
+  uploadFile() {
+    let loader = this.loadingCtrl.create({
+      content: "Uploading..."
+    });
+    loader.present();
+    const fileTransfer: FileTransferObject = this.transfer.create();
+  
+    let options: FileUploadOptions = {
+      fileKey: this.product._id,
+      fileName: this.product._id,
+      chunkedMode: false,
+      mimeType: "image/jpeg",
+      headers: {}
+    }
+  
+    fileTransfer.upload(this.imageURI, 'http://laposhshop.com:8100/api/uploadimage/products', options)
+      .then((data) => {
+      console.log(data+" Uploaded Successfully");
+      this.imageFileName = "http://laposhshop.com:8080/api/images/"+this.product._id;
+      loader.dismiss();
+      this.presentToast("Image uploaded successfully");
+    }, (err) => {
+      console.log(err);
+      loader.dismiss();
+      this.presentToast(err);
+    });
+  }
+
+  presentToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      duration: 3000,
+      position: 'bottom'
+    });
+  
+    toast.onDidDismiss(() => {
+      console.log('Dismissed toast');
+    });
+  
+    toast.present();
   }
 
   ionViewDidLoad() {
