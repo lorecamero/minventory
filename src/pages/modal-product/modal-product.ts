@@ -62,7 +62,7 @@ export class ModalProductPage {
   
     let options: FileUploadOptions = {
       fileKey: 'ionicfile',
-      fileName: this.imageFileName,
+      fileName: 'upload_'+this.product._id,
       chunkedMode: false,
       mimeType: "image/jpeg",
       headers: {}
@@ -71,7 +71,7 @@ export class ModalProductPage {
     fileTransfer.upload(this.imageURI, 'http://laposhshop.com:8100/api/uploadimage/products', options)
       .then((data) => {
       console.log(data+" Uploaded Successfully");
-      this.imageFileName = "http://laposhshop.com/api/images/ionicfile.jpg"
+      this.imageFileName = "http://laposhshop.com/api/images/"+data;
       loader.dismiss();
       this.presentToast("Image uploaded successfully");
     }, (err) => {
