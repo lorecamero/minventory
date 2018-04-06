@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AuthServiceProvider } from '../../providers/auth/auth-service';
 
 import { ProductsPage } from '../products/products';
+import { MageProductsPage } from '../mage-products/mage-products';
 
 /**
  * Generated class for the LoginPage page.
@@ -31,7 +32,7 @@ export class LoginPage {
   }
 
   login(loginForm: NgForm){
-    this.navCtrl.push(ProductsPage);
+    this.navCtrl.push(MageProductsPage);
 
     // this.loading = true;
     // this.authServiceProvider.login(loginForm.value.username, loginForm.value.password)

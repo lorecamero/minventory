@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { ProductsPage } from '../pages/products/products';
 import { LoginPage } from '../pages/login/login';
+import { MageProductsPage } from '../pages/mage-products/mage-products';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -29,6 +30,7 @@ import { AuthServiceProvider } from '../providers/auth/auth-service';
     HomePage,
     ProductsPage,
     TabsPage,
+    MageProductsPage,
     LoginPage
   ],
   imports: [
@@ -44,6 +46,7 @@ import { AuthServiceProvider } from '../providers/auth/auth-service';
     ContactPage,
     HomePage,
     ProductsPage,
+    MageProductsPage,
     TabsPage,
     LoginPage
   ],
