@@ -30,10 +30,19 @@
 
 <ion-content padding>
 
-
+    <ion-card *ngFor="let product of mageproducts">
+        <img src="{{product.image}}"/>
+        <ion-card-content>
+          <ion-card-title text-center>
+              {{product.name}}
+            </ion-card-title>
+          <p text-center>
+              {{product.sku}} - ${{product.price}}
+          </p>
+        </ion-card-content>
+      </ion-card>
      
-
-    <ion-list>
+    <!--<ion-list>
         <ion-item *ngFor="let product of mageproducts">
           <ion-thumbnail item-start>
             <img src="{{product.image}}">
@@ -42,6 +51,6 @@
           <p>{{product.sku}}</p>
           <button ion-button clear item-end>{{product.price}}</button>
         </ion-item>
-      </ion-list>
+      </ion-list>-->
 
 </ion-content>
