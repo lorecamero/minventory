@@ -20,7 +20,6 @@ declare var cordova: any;
 export class ModalProductPage {
   public product: any;
   public loader: any;
-  lastImage: string = null;
   loading: any;
 
   constructor(

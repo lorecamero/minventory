@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController,ModalController } from 'ionic-angular';
 import {ProductServiceProvider} from '../../providers/product-service/product-service';
 
 /**
@@ -24,11 +24,17 @@ export class MageProductsPage {
     public navCtrl: NavController,
     public ProductServiceProvider:ProductServiceProvider,
      public navParams: NavParams,
+     private ModalController:ModalController,
      public loadingCtrl: LoadingController
     ) {
       this.loadProducts('');
   }
 
+  openMageProductModal(product){
+    const pModal = this.ModalController.create("ModalMageproductPage",{product: product});
+    pModal.onDidDismiss(() => {  }); 
+    pModal.present();
+  }
 
 
   loadProducts(searchfilter){

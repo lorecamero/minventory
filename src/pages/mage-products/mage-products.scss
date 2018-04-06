@@ -1,9 +1,13 @@
 page-mage-products {
     .item-md ion-thumbnail img{
         width: 80px;
-        height: 130px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover; /* Do not scale the image */
+        object-position: center; /* Center the image within the element */
     }
     .filterbtn{
         width: 100%;
     }
+
 }
