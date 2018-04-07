@@ -34,12 +34,40 @@
                   <ion-label floating>Quantity</ion-label>
                 <ion-input type="text" name="qty" [(ngModel)]="qty"></ion-input>
               </ion-item>
+
+              <ion-item>
+                <ion-label>Stock Availability</ion-label>
+                <ion-select [(ngModel)]="is_in_stock">
+                  <ion-option value="1">Yes</ion-option>
+                  <ion-option value="0">No</ion-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Backorders</ion-label>
+                <ion-select [(ngModel)]="backorders">
+                  <ion-option value="0">No backorders</ion-option>
+                  <ion-option value="1">Allow QTY below 0</ion-option>
+                  <ion-option value="2">Allow QTY below 0 & notify customer</ion-option>
+                  <ion-option value="101">Allow pre-orders</ion-option>
+                </ion-select>
+              </ion-item>
+
+
+                <ion-item>
+                  <ion-label>Enabled</ion-label>
+                  <ion-select [(ngModel)]="status">
+                    <ion-option value="1">Yes</ion-option>
+                    <ion-option value="0">No</ion-option>
+                  </ion-select>
+                </ion-item>
+
       
               <div padding>
                   <button ion-button block>Update</button>
                 </div>
           
-            </ion-list>
+          </ion-list>
 
 
         </ion-card-content>

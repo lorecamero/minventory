@@ -18,6 +18,9 @@ export class ModalMageproductPage {
   public loader: any;
   loading: any;
   private qty: any;
+  private status: any;
+  private is_in_stock: any;
+  private backorders: any;
 
   constructor(
     public alertCtrl: AlertController,
@@ -29,6 +32,9 @@ export class ModalMageproductPage {
   ){
     this.mageproduct = navParams.get('product');
     this.qty = this.mageproduct.qty;
+    this.status = this.mageproduct.status;
+    this.is_in_stock = this.mageproduct.is_in_stock;
+    this.backorders = this.mageproduct.backorders;
   }
 
   ionViewDidLoad() {
