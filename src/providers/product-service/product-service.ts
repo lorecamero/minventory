@@ -70,6 +70,31 @@ export class ProductServiceProvider {
     });
   }
 
+  updateMageProduct(product) {
+
+    let formDatas = new FormData();
+    formDatas.append('key',product.key);
+    formDatas.append('sku',product.sku);
+    formDatas.append('qty',product.qty);
+    formDatas.append('status',product.status);
+    formDatas.append('is_in_stock',product.is_in_stock);
+    formDatas.append('entity_id',product.entity_id);
+    formDatas.append('backorders',product.backorders);
+
+    return new Promise((resolve, reject) => {
+    this.http.post('http://develop.laposhshop.com/updateproduct.php', formDatas)
+    .subscribe(data => {
+      console.log(data);
+      resolve(data);
+    }, error => {
+      console.log(error);
+      reject(error);// Error getting the data
+    });
+  });
+  }
+
+  
+
 
   addProduct(product) {
     this.product = product;
@@ -108,6 +133,8 @@ export class ProductServiceProvider {
 
   }
 
+ 
+
 
   updateProduct(product) {
 
@@ -143,6 +170,8 @@ export class ProductServiceProvider {
 
   }
 
+
+  
   deleteProduct(product) {
     /*
     let postParams = {

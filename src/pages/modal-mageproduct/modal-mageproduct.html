@@ -25,8 +25,9 @@
         <img src="{{mageproduct.image}}"/>
         <ion-card-content>
           <ion-card-title>
-              {{mageproduct.sku}} - ${{mageproduct.price}}
-            </ion-card-title>
+              {{mageproduct.sku}}
+          </ion-card-title>
+          <p>${{mageproduct.price}}</p>
 
           <ion-list>
 
@@ -58,13 +59,13 @@
                   <ion-label>Enabled</ion-label>
                   <ion-select [(ngModel)]="status">
                     <ion-option value="1">Yes</ion-option>
-                    <ion-option value="0">No</ion-option>
+                    <ion-option value="2">No</ion-option>
                   </ion-select>
                 </ion-item>
 
       
               <div padding>
-                  <button ion-button block>Update</button>
+                  <button ion-button block (click)='updateMageProduct()'>Update</button>
                 </div>
           
           </ion-list>

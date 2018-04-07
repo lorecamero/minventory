@@ -27,12 +27,13 @@ export class MageProductsPage {
      private ModalController:ModalController,
      public loadingCtrl: LoadingController
     ) {
+      this.searchfilter = '';
       this.loadProducts('');
   }
 
   openMageProductModal(product){
     const pModal = this.ModalController.create("ModalMageproductPage",{product: product});
-    pModal.onDidDismiss(() => {  }); 
+    pModal.onDidDismiss(() => { this.loadProducts(this.searchfilter); }); 
     pModal.present();
   }
 

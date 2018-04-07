@@ -17,6 +17,8 @@ export class ModalMageproductPage {
   public mageproduct: any;
   public loader: any;
   loading: any;
+  private entity_id:any;
+  private sku: any;
   private qty: any;
   private status: any;
   private is_in_stock: any;
@@ -31,6 +33,8 @@ export class ModalMageproductPage {
     public toastCtrl: ToastController
   ){
     this.mageproduct = navParams.get('product');
+    this.entity_id = this.mageproduct.entity_id;
+    this.qty = this.mageproduct.sku;
     this.qty = this.mageproduct.qty;
     this.status = this.mageproduct.status;
     this.is_in_stock = this.mageproduct.is_in_stock;
@@ -39,6 +43,26 @@ export class ModalMageproductPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalMageproductPage');
+  }
+
+  updateMageProduct(){
+    let mage = {
+      key: 'lore',
+      entity_id: this.entity_id,
+      sku: this.sku,
+      is_in_stock: this.is_in_stock,
+      qty: this.qty,
+      backorders: this.backorders,
+      status: this.status 
+    }
+    this.presentLoading();
+
+    this.ProductServiceProvider.updateMageProduct(mage)
+    .then((mage) => {
+    this.removeLoading();
+     this.showAlert();
+    });
+    
   }
 
   closeMageModalProduct(){
@@ -55,9 +79,9 @@ export class ModalMageproductPage {
     this.loader.dismiss();
   }
 
-  showAlert(product) {
+  showAlert() {
     let alert = this.alertCtrl.create({
-      title: product.name+'',
+      title: this.mageproduct.name+'',
       subTitle: 'Updated stock successfully',
       buttons: ['OK']
     });
